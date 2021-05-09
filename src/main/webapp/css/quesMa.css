@@ -1,0 +1,25 @@
+.stuTable{
+    position: absolute;
+    text-align: center;
+    top: 50px;
+    left: 10%;
+}
+
+.stuTable td{
+    padding: 10px;
+    text-align: left;
+    font-size: 14px;
+}
+
+.stuTable td:nth-child(2){
+    width: 600px;
+
+}
+.stuTable td:nth-child(3){
+    width: 100px;
+    text-align: center;
+}
+.stuTable td:last-child{
+    width:200px;
+    text-align: center;
+}

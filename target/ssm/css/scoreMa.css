@@ -1,0 +1,44 @@
+@charset "utf-8";
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#grade{
+    position: absolute;
+    right: 960px;
+    top: 5px;
+}
+#course{
+    position: absolute;
+    right: 1060px;
+    top: 5px;
+}
+
+.scoreInfo{
+    width: 200px;
+    height: 120px;
+    position: absolute;
+    top:142px;
+    right: 355px;
+    border: 2px solid #4682B4;
+}
+.scoreInfo ul {
+    width: 200px;
+    height: 120px;
+    list-style: none;
+    position: absolute;
+    right: -32px;
+    top: 10px;
+
+}
+
+.paperName{
+    position: absolute;
+    top:20px;
+    left: 270px;
+
+}
+.stuTable{
+    top:90px;
+}

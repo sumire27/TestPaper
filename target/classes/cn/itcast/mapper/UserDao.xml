@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.itcast.dao.UserDao">
+
+    <!-- 数据库表映射 -->
+    <resultMap id="userRM" type="cn.itcast.domain.User">
+        <id property="userId" column="userid"/>
+        <result property="userName" column="username"/>
+        <result property="userPwd" column="userpwd"/>
+        <result property="grade" column="grade"/>
+        <result property="userType" column="usertype"/>
+        <result property="userState" column="userstate"/>
+        <result property="email" column="email"/>
+        <result property="telephone" column="telephone"/>
+        <result property="address" column="address"/>
+        <result property="remark" column="remark"/>
+    </resultMap>
+
+    <!-- 新增 -->
+    <insert id="addUser" parameterType="cn.itcast.domain.User">
+		insert into t_user
+		(userid,username,userpwd,grade,usertype,userstate,email,telephone,address,remark)
+		values
+		(#{userId},#{userName},#{userPwd},#{grade},#{userType},'0',#{email},#{telephone},#{address},#{remark})
+	</insert>
+
+    <!-- 修改 -->
+    <update id="updateUser" parameterType="cn.itcast.domain.User">
+        update t_user
+        <set>
+            <if test="userName!=null">
+                username=#{userName},
+            </if>
+            <if test="userPwd!=null">
+                userpwd=#{userPwd},
+            </if>
+            <if test="grade!=null">
+                grade=#{grade},
+            </if>
+            <if test="userType!=null">
+                usertype=#{userType},
+            </if>
+            <if test="userState!=null">
+                userstate=#{userState},
+            </if>
+            <if test="email!=null">
+                email=#{email},
+            </if>
+            <if test="telephone!=null">
+                telephone=#{telephone},
+            </if>
+            <if test="address!=null">
+                address=#{address},
+            </if>
+            <if test="remark!=null">
+                remark=#{remark},
+            </if>
+
+        </set>
+        where userid=#{userId}
+    </update>
+
+    <!-- 查询所有记录 -->
+    <select id="findAllStu" parameterType="string" resultMap="userRM">
+		select * from t_user
+		where 1=1 and usertype=0
+		order by userstate
+	</select>
+
+    <select id="findAllTea" parameterType="string" resultMap="userRM">
+		select * from t_user
+		where 1=1 and usertype=2
+		order by userstate
+	</select>
+
+
+    <!-- 查询所有待审核记录 -->
+    <select id="findPending" parameterType="string" resultMap="userRM">
+		select * from t_user
+		where userstate=0
+	</select>
+
+    <!-- 查询一个录 -->
+    <select id="findStuById" parameterType="cn.itcast.domain.User" resultMap="userRM">
+		select * from t_user
+		where userid=#{id}
+	</select>
+
+    <!-- 删除一条记录 -->
+    <delete id="deleteUser" parameterType="string">
+		delete from t_user
+		where userid=#{id}
+	</delete>
+
+    <!-- 查询一个录 -->
+    <select id="getStu" parameterType="cn.itcast.domain.User" resultMap="userRM">
+		select * from t_user
+		where userid=#{userId}
+		and userstate=1
+	</select>
+
+    <!--	根据信息查找学生-->
+    <select id="findByInfo" parameterType="string" resultMap="userRM">
+		select * from t_user where userid like  CONCAT('%',#{searchInfo},'%')
+		or username like  CONCAT('%',#{searchInfo},'%')
+		or address like  CONCAT('%',#{searchInfo},'%')
+		or telephone like  CONCAT('%',#{searchInfo},'%')
+		or grade like  CONCAT('%',#{searchInfo},'%')
+	</select>
+    <select id="findByGrade" parameterType="string" resultMap="userRM">
+		select * from t_user where grade like  CONCAT('%',#{searchInfo},'%')
+	</select>
+
+</mapper>

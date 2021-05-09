@@ -1,0 +1,81 @@
+@charset "utf-8";
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.stuTable{
+    position: absolute;
+    text-align: center;
+    top: 50px;
+    left: 200px;
+}
+
+.stuTable td{
+    padding: 10px;
+}
+.stuTable tr:nth-child(1){
+    background: #fffca6;
+}
+.stuTable td:nth-last-child(1) a{
+    padding-left: 5px;
+}
+
+a{
+    color: black;
+    text-decoration: none;
+    text-align: center;
+    border: 1px solid #4682B4;
+    border-radius: 3px;
+    font-size: 10px;
+}
+
+.addUser a{
+    border: none;
+    font-size: 16px;
+    position: absolute;
+    left: 100px;
+    color: #4682B4;
+
+}
+
+#line{
+    height: 1px;
+    border-bottom:1px solid  black;
+    padding: 0;
+    z-index: 99999;
+}
+
+.search-box {
+    position: absolute;
+    right: 20px;
+    top:5px;
+}
+.search-box .searchInfo{
+
+    height: 20px;
+    font-size: 16px;
+}
+.search-box .searchBtn{
+
+    background:#4682B4 ;
+    width:40px;
+    height: 25px;
+    border: 1px solid;
+    border-radius: 4px;
+}
+
+.del{
+    position: absolute;
+    right: 860px;
+    top: 5px;
+}
+.add{
+    position: absolute;
+    top: 5px;
+}
+
+#grade{
+    right: 960px;
+    top: 5px;
+}
